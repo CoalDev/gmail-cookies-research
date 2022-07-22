@@ -76,6 +76,7 @@ Ideas on stuff to research:
  - Are notifications sent ❌
     - I didn't get any notification to my phone, or to my main Gmail window
  - Will using curl with all the headers and cookies work❓
+ - Use the cookies through TOR (The Onion Routing)❓
 ```
 🤷🏻‍♂️ = Doesn't matter anymore
 ✅ = Checked, and does work
