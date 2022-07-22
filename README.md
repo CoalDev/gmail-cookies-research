@@ -75,6 +75,7 @@ Ideas on stuff to research:
     - This doesn't matter, as it works even without using the same headers
  - Are notifications sent ❌
     - I didn't get any notification to my phone, or to my main Gmail window
+ - Will using curl with all the headers and cookies work❓
 ```
 🤷🏻‍♂️ = Doesn't matter anymore
 ✅ = Checked, and succefully worked
@@ -86,5 +87,41 @@ Ideas on stuff to research:
 ## Notes
 ---------
 
-I used burp on my machine, and surfed to `https://mail.google.com/mail/u/0/#inbox`:
+I used burp on `Computer 1`, and surfed to `https://mail.google.com/mail/u/0/#inbox` and one of the requests was:
+```
+POST /mail/u/0/logstreamz HTTP/2
+Host: mail.google.com
+Cookie: COMPASS=XXXX; GMAIL_AT=XXXX; COMPASS=XXXX; 1P_JAR=XXXX; NID=XXXX; ANID=XXXX; AEC=XXXX; SID=XXXX; __Secure-1PSID=XXXX; __Secure-3PSID=XXXX; HSID=AStbfoVNSK5-XXXX; SSID=XXXX; APISID=XXXX; SAPISID=XXXX; __Secure-1PAPISID=XXXX; __Secure-3PAPISID=XXXX; SIDCC=XXXX; __Secure-1PSIDCC=XXXX; __Secure-3PSIDCC=XXXX; OSID=XXXX; __Secure-OSID=XXXX; __Host-GMAIL_SCH_GMN=XXXX; __Host-GMAIL_SCH_GMS=XXXX; __Host-GMAIL_SCH_GML=XXXX; SEARCH_SAMESITE=XXXX; __Host-GMAIL_SCH=XXXX; S=XXXX
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0) Gecko/20100101 Firefox/102.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Content-Type: multipart/form-data; boundary=---------------------------174719142712504276453830164275
+Content-Length: 678
+Origin: https://mail.google.com
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+Referer: https://mail.google.com/mail/u/0/
+Te: trailers
 
+-----------------------------174719142712504276453830164275
+Content-Disposition: form-data; name="impressionId"
+
+initial_load_attempt
+-----------------------------174719142712504276453830164275
+Content-Disposition: form-data; name="customData"
+
+{"mct":1,"gapi_version":null,"chat_no_gmail_storage":false}
+-----------------------------174719142712504276453830164275
+Content-Disposition: form-data; name="defaultData"
+
+{"inbox_type":"SECTIONED","hub_configuration":3,"delegation_request":false,"gapi_version":null,"compile_mode":"","is_cached_html":true,"build_label":"gmail.pinto-server_20220706.01_p0"}
+-----------------------------174719142712504276453830164275--
+```
+
+I wanted to take those cookies, and use them on `Computer 2`, so at first I just intercepted all the traffic on `Computer 2` and surfed to the same URL, then I just copy pasted those cookies in a couple requests and saw it worked.
+
+But I didn't want to keep copy pasting the cookies, so I looked around and saw that burp has a feature called `Session Handling Rules`, and with that feature I could add a rule that applies only to the `Proxy` and will add those cookies to every request made to `https://mail.google.com`.
+
+Then I just surfed to `https://mail.google.com/mail/u/0/#inbox` and it worked, no more manual changes.
