@@ -1,7 +1,7 @@
 # Gmail cookie stealing research
 
 ---------
-## Research results
+## Setup
 ---------
 
 Computer 1 (MacBook Air):
@@ -40,6 +40,19 @@ Gmail:
  - Connected to my phone
  - Very old and legit account
 
+---------
+## Setup Notes
+---------
+
+I launched a t2.medium EC2 machine in AWS eu-central-1 Frankfurt
+ - Windows Server 2019
+    - Installed Firefox
+    - Installed VSCode
+    - Installed BurpSuite
+
+---------
+## Research Results
+---------
 
 Ideas on stuff to research:
  - Use burpsuite to copy the cookies ✅
@@ -83,9 +96,9 @@ Ideas on stuff to research:
 ❌ = Checked, and is not correct
 ❓ = Still didn't check or go through
 ```
----------
 
-## Notes
+---------
+## Research Notes
 ---------
 
 I used burp on `Computer 1`, and surfed to `https://mail.google.com/mail/u/0/#inbox` and one of the requests was:
