@@ -61,20 +61,20 @@ Ideas on stuff to research:
      - Still works, so the user agent doesn't really matter
  - What if the time is different ✅ 
     - The time on `Computer 1` is:
-    ```
-    12:09
-    Timezone: Israel Daylight Time
-    ```
+        ```
+        12:09
+        Timezone: Israel Daylight Time
+        ```
     - The time on `Computer 2` is:
-    ```
-    9:09
-    Timezone: Central European Summer Time
-    ```
-    > Still works, so the timezone doesn't really matter
+        ```
+        9:09
+        Timezone: Central European Summer Time
+        ```
+    - Still works, so the timezone doesn't really matter
  - Try to use the same headers 🤷🏻‍♂️
-    > This doesn't matter, as it works even without using the same headers
+    - This doesn't matter, as it works even without using the same headers
  - Are notifications sent ❌
-    > I didn't get any notification to my phone, or to my main Gmail window
+    - I didn't get any notification to my phone, or to my main Gmail window
 ```
 🤷🏻‍♂️ = Doesn't matter anymore
 ✅ = Checked, and succefully worked
