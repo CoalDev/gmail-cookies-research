@@ -78,8 +78,8 @@ Ideas on stuff to research:
  - Will using curl with all the headers and cookies work❓
 ```
 🤷🏻‍♂️ = Doesn't matter anymore
-✅ = Checked, and succefully worked
-❌ = Checks, and is not correct
+✅ = Checked, and does work
+❌ = Checked, and is not correct
 ❓ = Still didn't check or go through
 ```
 ---------
