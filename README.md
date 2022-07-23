@@ -57,7 +57,14 @@ I launched a t2.medium EC2 machine in AWS eu-central-1 Frankfurt
 Ideas on stuff to research:
  - Use burpsuite to copy the cookies ✅
 	- Works even from a different country and different IP
- - What cookies are necessary to read mails❓ 
+ - What cookies are necessary to read mails ✅
+    - To read/send mails you only need 2 cookies
+        ```
+        SID=XXXX;
+        HSID=XXXX;
+        SSID=XXXX;
+        OSID=XXXX
+        ```
  - What if the `User-Agent` is different ✅
     - On `Computer 1` the `User-Agent` is:
         ```
@@ -101,6 +108,8 @@ Ideas on stuff to research:
 ## Research Notes
 ---------
 
+### Just copying the cookies
+
 I used burp on `Computer 1`, and surfed to `https://mail.google.com/mail/u/0/#inbox` and one of the requests was:
 ```
 POST /mail/u/0/logstreamz HTTP/2
@@ -139,3 +148,48 @@ I wanted to take those cookies, and use them on `Computer 2`, so at first I just
 But I didn't want to keep copy pasting the cookies, so I looked around and saw that burp has a feature called `Session Handling Rules`, and with that feature I could add a rule that applies only to the `Proxy` and will add those cookies to every request made to `https://mail.google.com`.
 
 Then I just surfed to `https://mail.google.com/mail/u/0/#inbox` and it worked, no more manual changes.
+
+### What cookies really matter?
+
+So now that I don't have to manualy change the cookies this task should be easy.
+I just started ticking off cookies in the rule I set, and tried accesing an email, if it worked, then the cookie wasn't necessary.
+
+Doing this I found that only 2 cookies are necassary to read mails:
+```
+SID=XXXX;
+OSID=XXXX
+```
+
+But then I realised a mistake I made, I didn't clear my cookies after every request, so some cookies got stored as a result of my test, after I realised this I found out that the cookies I really need are:
+```
+SID=XXXX;
+HSID=XXXX;
+SSID=XXXX;
+OSID=XXXX
+```
+
+When you make a request, just append those cookies, and it should work.
+I also made a script:
+```py
+import requests
+
+# If you want to see all the emails you can go to this URL
+# https://mail.google.com/mail/u/0/#all/pX and X is a page number, i.e https://mail.google.com/mail/u/0/#all/p5
+# URL = "https://mail.google.com/mail/u/0/#all/p2"
+URL = "https://mail.google.com/mail/u/0/#inbox"
+cookies = {
+    "SID": "XXXX",
+    "OSID": "XXXX",
+    "HSID": "XXXX",
+    "SSID": "XXXX"
+}
+
+def main():
+    res = requests.get(URL, cookies=cookies)
+    
+    # You can use BeautifulSoup to parse the request and look at all the emails and their contents
+    print(res.text)
+
+if __name__ == '__main__':
+    main()
+```
