@@ -95,7 +95,8 @@ Ideas on stuff to research:
     - This doesn't matter, as it works even without using the same headers
  - Are notifications sent ❌
     - I didn't get any notification to my phone, or to my main Gmail window
- - Will using curl with all the headers and cookies work❓
+ - Will using a python script with the necessary cookies work ✅
+    - I asked this question because I wasn't sure if it will append the other cookies like `COMPASS`, but it works either way, the script is at the bottom of the `Research Notes`.
  - Use the cookies through TOR (The Onion Routing)❓
 ```
 🤷🏻‍♂️ = Doesn't matter anymore
@@ -148,6 +149,8 @@ I wanted to take those cookies, and use them on `Computer 2`, so at first I just
 But I didn't want to keep copy pasting the cookies, so I looked around and saw that burp has a feature called `Session Handling Rules`, and with that feature I could add a rule that applies only to the `Proxy` and will add those cookies to every request made to `https://mail.google.com`.
 
 Then I just surfed to `https://mail.google.com/mail/u/0/#inbox` and it worked, no more manual changes.
+
+Checking on a different browser it still works, changing my IP and it still works, so it seems like Google doesn't really care about what computer you use, where are you from, etc... if you have the cookies, you win.
 
 ### What cookies really matter?
 
