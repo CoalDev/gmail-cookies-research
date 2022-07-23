@@ -58,7 +58,7 @@ Ideas on stuff to research:
  - Use burpsuite to copy the cookies ✅
 	- Works even from a different country and different IP
  - What cookies are necessary to read mails ✅
-    - To read/send mails you only need 2 cookies
+    - To read/send mails you only need 4 cookies
         ```
         SID=XXXX;
         HSID=XXXX;
@@ -193,3 +193,5 @@ def main():
 if __name__ == '__main__':
     main()
 ```
+
+
