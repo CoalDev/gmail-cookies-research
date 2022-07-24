@@ -93,31 +93,41 @@ Ideas on stuff to research:
     - Still works, so the timezone doesn't really matter
  - Try to use the same headers 🤷🏻‍♂️
     - This doesn't matter, as it works even without using the same headers
+
  - Are notifications sent ❌
     - I didn't get any notification to my phone, or to my main Gmail window
+
  - Will using a python script with the necessary cookies work ✅
     - I asked this question because I wasn't sure if it will append the other cookies like `COMPASS`, but it works either way, the script is at the bottom of the `Research Notes`.
+
  - Use the cookies through TOR (The Onion Routing)❓
+
  - Will the cookies work after 2 days ✅
     - I just ran the script I made, and it still worked, which means the cookies are still good.
+
  - Will closing the Gmail window disconnect the session? ❌
     - Well, the above question answers this, I used a cookie that is 2 days old, with Gmail closed, so closing the window doesnt disconnect the session
- - What does it keep in the indexed db ❌
+
+ - What does it keep in the indexed db when live using the browser ❌
     - It doesn't keep interesting stuff like keys to use so you could login in with.
     - It stores stuff like:
         - StoredCacheState - A cache state that could be returned to, so you won't make more requests
         - StoredCacheHitCounters - Stores a URL that is accessed a lot in the cache
         - So in general, it just caches stuff, but not really important stuff, like emails
+
  - What does it keep in the local storage when live using the browser ❌
     - It doesn't keep interesting stuff like keys to use so you could login in with.
     - It stores stuff like:
         - initialLoadStartCount - Just a number, doesn't really matter
         - PeopleStackExperiments - Not sure what that is, a big json array with values I don't understand and didn't research further
         - So in general, it doesn't look that interesting.
+
  - What does it keep in the local storage/indexed db after closing the browser ❌
     - The exact same thing as when using the browser live, so nothing interesting.
+
  - How does the `Remember Me` feature work ❌
-    - The feature doesn't exist, it used to, but now Google manages the cookies in a smart way that doesn't require this feature
+    - The feature doesn't exist, it used to, but now Google manages the state in a way that doesn't require this feature.
+    
  - Will logging out disconnect the session ✅
     - When logging out Gmail disconnects the session, but when just closing the tab it doesn't
 ```
