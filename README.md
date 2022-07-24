@@ -102,7 +102,7 @@ Ideas on stuff to research:
     - I just ran the script I made, and it still worked, which means the cookies are still good.
  - Will closing the Gmail window disconnect the session? ❌
     - Well, the above question answers this, I used a cookie that is 2 days old, with Gmail closed, so closing the window doesnt disconnect the session
- - What does it keep in the indexed db ✅
+ - What does it keep in the indexed db ❌
     - It doesn't keep interesting stuff like keys to use so you could login in with.
     - It stores stuff like:
         - StoredCacheState - A cache state that could be returned to, so you won't make more requests
