@@ -102,12 +102,18 @@ Ideas on stuff to research:
     - I just ran the script I made, and it still worked, which means the cookies are still good.
  - Will closing the Gmail window disconnect the session? ❌
     - Well, the above question answers this, I used a cookie that is 2 days old, with Gmail closed, so closing the window doesnt disconnect the session
- - What does it keep in the local storage ✅
+ - What does it keep in the indexed db ✅
     - It doesn't keep interesting stuff like keys to use so you could login in with.
     - It stores stuff like:
         - StoredCacheState - A cache state that could be returned to, so you won't make more requests
         - StoredCacheHitCounters - Stores a URL that is accessed a lot in the cache
         - So in general, it just caches stuff, but not really important stuff, like emails
+ - What does it keep in the local storage ❌
+    - It doesn't keep interesting stuff like keys to use so you could login in with.
+    - It stores stuff like:
+        - initialLoadStartCount - Just a number, doesn't really matter
+        - PeopleStackExperiments - Not sure what that is, a big json array with values I don't understand and didn't research further
+        - So in general, it doesn't look that interesting.
  - How does the `Remember Me` feature work ❌
     - The feature doesn't exist, it used to, but now Google manages the cookies in a smart way that doesn't require this feature
  - Will logging out disconnect the session ✅
@@ -210,3 +216,5 @@ def main():
 if __name__ == '__main__':
     main()
 ```
+
+
