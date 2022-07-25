@@ -4,7 +4,7 @@
 ## Setup
 ---------
 The whole research took 2 days (+-)
-    - 22.7.2022 - 23.7.2022
+ - 22.7.2022 - 23.7.2022
 
 Computer 1 (MacBook Air):
  - Firefox (102.0)
