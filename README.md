@@ -100,7 +100,7 @@ Ideas on stuff to research:
     - Still works, so the timezone doesn't really matter
 
  - Will using a python script with the necessary cookies work ✅
-    - I asked this question because I wasn't sure if it will append the other cookies like `COMPASS`, but it works either way, [this is the script](####A-Quick-Script).
+    - I asked this question because I wasn't sure if it will append the other cookies like `COMPASS`, but it works either way, [this is the script](#A-Quick-Script).
 
  - Use the cookies through TOR (The Onion Routing)❓
 
