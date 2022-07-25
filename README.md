@@ -131,7 +131,7 @@ Ideas on stuff to research:
     - The feature doesn't exist, it used to, but now Google manages the state in a way that doesn't require this feature.
 
  - Will `cookies.sqlite` work between computers (Different OS's) ✅
-    - I took the `cookies.sqlite` file from my MacBook and transfered it to the Windows Server, and it worked, I got access to way more than just my Gmail, as you get all of the cookies from all of the websites.
+    - I took the `cookies.sqlite` file from my MacBook and transfered it to the Windows Server, and it worked, **I got access to way more than just my Gmail, as you get all of the cookies from all of the websites.**
 ```
 ✅ = Checked, and does work
 ❌ = Checked, and is not correct
