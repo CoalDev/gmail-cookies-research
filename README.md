@@ -7,7 +7,7 @@
 Computer 1 (MacBook Air):
  - Firefox (102.0)
  - Israel
- - MacOS
+ - MacOS Big Sur 11.6
     ```
     {
         "YourFuckingIPAddress": "2a02:ed0:6f17:bc00:71d5:ac86:de9:2f06",
@@ -22,7 +22,7 @@ Computer 1 (MacBook Air):
 Computer 2 (AWS Server):
  - Firefox (102.0)
  - Germany
- - Windows
+ - Windows Server 2019 Datacenter (17763)
     ```
     {
         "YourFuckingIPAddress": "3.126.50.150",
@@ -36,9 +36,9 @@ Computer 2 (AWS Server):
 
 Gmail:
  - `ihilov.lior@gmail.com`
- - Multi-factor authentication
+ - Multi-factor authentication (Google Authenticator + Phone verifications)
  - Connected to my phone
- - Very old and legit account
+ - Old account that is known to be from Israel
 
 ---------
 ## Setup Notes
@@ -46,9 +46,10 @@ Gmail:
 
 I launched a t2.medium EC2 machine in AWS eu-central-1 Frankfurt
  - Windows Server 2019
-    - Installed Firefox
-    - Installed VSCode
-    - Installed BurpSuite
+    - Installed:
+        - Firefox
+        - VSCode
+        - BurpSuite
 
 ---------
 ## Research Results
@@ -57,14 +58,19 @@ I launched a t2.medium EC2 machine in AWS eu-central-1 Frankfurt
 Ideas on stuff to research:
  - Use burpsuite to copy the cookies ✅
 	- Works even from a different country and different IP
+
+ - **Do any notifications get sent** ❌
+    - **I didn't get any notification to my phone, or to my Gmail window.**
+
  - What cookies are necessary to read mails ✅
     - To read/send mails you only need 4 cookies
         ```
         SID=XXXX;
         HSID=XXXX;
         SSID=XXXX;
-        OSID=XXXX
+        OSID=XXXX;
         ```
+
  - What if the `User-Agent` is different ✅
     - On `Computer 1` the `User-Agent` is:
         ```
@@ -79,6 +85,7 @@ Ideas on stuff to research:
         Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.53 Safari/537.36
         ```
      - Still works, so the user agent doesn't really matter
+
  - What if the time is different ✅ 
     - The time on `Computer 1` is:
         ```
@@ -91,14 +98,9 @@ Ideas on stuff to research:
         Timezone: Central European Summer Time
         ```
     - Still works, so the timezone doesn't really matter
- - Try to use the same headers 🤷🏻‍♂️
-    - This doesn't matter, as it works even without using the same headers
-
- - Are notifications sent ❌
-    - I didn't get any notification to my phone, or to my main Gmail window
 
  - Will using a python script with the necessary cookies work ✅
-    - I asked this question because I wasn't sure if it will append the other cookies like `COMPASS`, but it works either way, the script is at the bottom of the `Research Notes`.
+    - I asked this question because I wasn't sure if it will append the other cookies like `COMPASS`, but it works either way, [this is the script](####A-Quick-Script).
 
  - Use the cookies through TOR (The Onion Routing)❓
 
@@ -108,30 +110,27 @@ Ideas on stuff to research:
  - Will closing the Gmail window disconnect the session? ❌
     - Well, the above question answers this, I used a cookie that is 2 days old, with Gmail closed, so closing the window doesnt disconnect the session
 
- - What does it keep in the indexed db when live using the browser ❌
-    - It doesn't keep interesting stuff like keys to use so you could login in with.
-    - It stores stuff like:
-        - StoredCacheState - A cache state that could be returned to, so you won't make more requests
-        - StoredCacheHitCounters - Stores a URL that is accessed a lot in the cache
-        - So in general, it just caches stuff, but not really important stuff, like emails
+ - Will logging out disconnect the session ✅
+    - When logging out, Gmail disconnects the session.
 
- - What does it keep in the local storage when live using the browser ❌
-    - It doesn't keep interesting stuff like keys to use so you could login in with.
-    - It stores stuff like:
-        - initialLoadStartCount - Just a number, doesn't really matter
-        - PeopleStackExperiments - Not sure what that is, a big json array with values I don't understand and didn't research further
+ - Local Storage & Indexed DB ❌
+    - What does it contain when using the browser:
+        - Local Storage:
+            - initialLoadStartCount - Just a number, doesn't really matter
+            - PeopleStackExperiments - Not sure what that is, a big json array with values I don't understand and didn't research further
+        - Indexed DB:
+            - StoredCacheState - A cache state that could be returned to, so you won't make more requests
+            - StoredCacheHitCounters - Stores a URL that is accessed a lot in the cache
         - So in general, it doesn't look that interesting.
-
- - What does it keep in the local storage/indexed db after closing the browser ❌
-    - The exact same thing as when using the browser live, so nothing interesting.
+    - What does it contain after closing the browser:
+        - The exact same thing as when using the browser live, so nothing interesting.
 
  - How does the `Remember Me` feature work ❌
     - The feature doesn't exist, it used to, but now Google manages the state in a way that doesn't require this feature.
-    
- - Will logging out disconnect the session ✅
-    - When logging out Gmail disconnects the session, but when just closing the tab it doesn't
+
+ - Will `cookies.sqlite` work between computers (Different OS's) ✅
+    - I took the `cookies.sqlite` file from my MacBook and transfered it to the Windows Server, and it worked, I got access to way more than just my Gmail, as you get all of the cookies from all of the websites.
 ```
-🤷🏻‍♂️ = Doesn't matter anymore
 ✅ = Checked, and does work
 ❌ = Checked, and is not correct
 ❓ = Still didn't check or go through
@@ -192,7 +191,7 @@ I just started ticking off cookies in the rule I set, and tried accesing an emai
 Doing this I found that only 2 cookies are necassary to read mails:
 ```
 SID=XXXX;
-OSID=XXXX
+OSID=XXXX;
 ```
 
 But then I realised a mistake I made, I didn't clear my cookies after every request, so some cookies got stored as a result of my test, after I realised this I found out that the cookies I really need are:
@@ -200,11 +199,11 @@ But then I realised a mistake I made, I didn't clear my cookies after every requ
 SID=XXXX;
 HSID=XXXX;
 SSID=XXXX;
-OSID=XXXX
+OSID=XXXX;
 ```
 
 When you make a request, just append those cookies, and it should work.
-I also made a script:
+#### A Quick Script
 ```py
 import requests
 
