@@ -62,7 +62,7 @@ Ideas on stuff to research:
 	- Works even from a different country and different IP
 
  - **Do any notifications get sent** ❌
-    - **I didn't get any notification to my phone, or to my Gmail window.**
+    - **I didn't get any notification to my phone, or to my Gmail window, I expected to get a notification of a new PC on my account, to be alerted in some way that someone new is in my account or that maybe something is wrong**
 
  - What cookies are necessary to read mails ✅
     - To read/send mails you only need 4 cookies
