@@ -37,7 +37,6 @@ Computer 2 (AWS Server):
     ```
 
 Gmail:
- - `ihilov.lior@gmail.com`
  - Multi-factor authentication (Google Authenticator + Phone verifications)
  - Connected to my phone
  - Old account that is known to be from Israel
