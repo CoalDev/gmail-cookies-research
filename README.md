@@ -1,4 +1,5 @@
 # Gmail cookie stealing research
+#### Research about gmail's cookies, how to read and write mails with only 4 cookies.
 
 ---------
 ## Goal
