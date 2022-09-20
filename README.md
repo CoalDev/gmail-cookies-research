@@ -1,6 +1,11 @@
 # Gmail cookie stealing research
 
 ---------
+## Goal
+---------
+Figure out if cookies can be reused on different computers, if so what are the requirements for that, and what are the exact cookies you need + create a simple script
+
+---------
 ## Setup
 ---------
 The whole research took 2 days (+-)
